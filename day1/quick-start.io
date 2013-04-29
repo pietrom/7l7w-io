@@ -3,11 +3,11 @@ Car description := "Four wheels and an engine"
 Renault := Car clone
 myCar := Renault clone
 
-Renault description
-Renault type
-myCar type
+Renault description println
+Renault type println\
+myCar type println
 
-myCar description
+myCar description println
 myCar description := "My beautiful white car"
-myCar description
+myCar description println
 
