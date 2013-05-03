@@ -2,11 +2,14 @@ aList := List clone
 
 describe("List spikes",
 	beforeEach(
-		aList removeAll
 		aList append("Merckx")
 		aList append("Hinault")
 		aList append("Contador")
 	),
+
+	afterEach(
+		aList removeAll
+	)
 
 	it("size message returns the size of the List",
 		"Test size" println
