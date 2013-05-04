@@ -1,21 +1,21 @@
 Car := Object clone
-Car description := "Four wheels and an engine"
 Renault := Car clone
+Car description := "Four wheels and an engine"
 myCar := Renault clone
-
-Renault description println
-Renault type println
-myCar type println
-
-myCar description println
-myCar description := "My beautiful white car"
-myCar description println
 
 describe("Quick start",
 	it("Should return proto name as type for uppercase proto",
-		expect("Renault")  toBe ("Renault")
+		Renault type println
+		expect(Renault type)  toBe ("Renault")
 	),
 	it("Should return parent proto name as type for lowercase proto",
-		expect("Renault") toBe("Renault")
+		expect(myCar type) toBe("Renault")
+	),
+	it("Slots' inheritance from prototype",
+		expect(myCar description) toBe("Four wheels and an engine")
+	),
+	it("Can redefine slots value after clone",
+		myCar description := "My beautiful white car"
+		expect(myCar description) toBe("My beautiful white car")
 	)
 )
