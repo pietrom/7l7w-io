@@ -12,5 +12,11 @@ describe("Singleton's spikes",
 		x := Highlander clone
 		y := Highlander clone
 		expect(x == y) toBe (true)
+	),
+
+	it("Clone of clone of singleton object is the same object",
+		x := Highlander clone
+		y := x clone
+		expect(x == y) toBe (true)
 	)
 )
