@@ -20,5 +20,12 @@ describe("Singleton's spikes",
 		x := Highlander clone
 		y := x clone
 		expect(x == y) toBe (true)
+	),
+	
+	it("Singleton is not for ever",
+		Highlander clone := Object clone
+		x := Highlander clone
+		y := x clone
+		expect(x == y) toBe (false)
 	)
 )
