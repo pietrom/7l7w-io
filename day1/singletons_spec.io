@@ -1,7 +1,9 @@
 Highlander := Object clone
-Highlander clone := Highlander
 
 describe("Singleton's spikes",
+	beforeEach(
+		Highlander clone := Highlander
+	),
 	it("Clone of normal object is not the same object",
 		x := Object clone
 		y := x clone
