@@ -52,6 +52,12 @@ describe("List spikes",
 		expect(buffer) toBe ("0:Merckx;1:Hinault;2:Contador;")
 	),
 	
+	it("foreach iterates over the list without index",
+		buffer := String clone
+		aList foreach(e, buffer := buffer .. e .. ";")
+		expect(buffer) toBe ("Merckx;Hinault;Contador;")
+	),
+	
 	it("map maps list's elements",
 		mapped := aList map(e, e at(0) asCharacter)
 		expect(mapped) toBe (list("M", "H", "C"))
