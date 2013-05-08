@@ -50,6 +50,11 @@ describe("List spikes",
 		buffer := String clone
 		aList foreach(i, e, buffer := buffer .. i .. ":" .. e .. ";")
 		expect(buffer) toBe ("0:Merckx;1:Hinault;2:Contador;")
+	),
+	
+	it("map maps list's elements",
+		mapped := aList map(e, e at(0) asCharacter)
+		expect(mapped) toBe (list("M", "H", "C"))
 	)
 )
 
