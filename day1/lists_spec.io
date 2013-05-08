@@ -44,6 +44,12 @@ describe("List spikes",
 		aList atPut (2, "Indurain")
 		expect(aList size) toBe (3)
 		expect(aList at(2)) toBe ("Indurain")
-	)		
+	),
+	
+	it("foreach iterates over the list",
+		buffer := String clone
+		aList foreach(i, e, buffer := buffer .. i .. ":" .. e .. ";")
+		expect(buffer) toBe ("0:Merckx;1:Hinault;2:Contador;")
+	)
 )
 
