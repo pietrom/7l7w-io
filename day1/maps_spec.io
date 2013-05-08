@@ -25,6 +25,12 @@ describe("Map spikes",
 
 	it("at message returns nil when key is not present",
 		expect(aMap at("me")) toBe(nil)
+	),
+	
+	it("foreach message iterates over the Map",
+		buffer := String clone
+		aMap foreach(k, v, buffer := buffer .. k .. ":" .. v .. ";")
+		expect(buffer) toBe("Merckx:11;Hinault:10;Indurain:7;")
 	)
 )
 
