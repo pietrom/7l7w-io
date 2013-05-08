@@ -32,5 +32,11 @@ describe("Map spikes",
 		aMap foreach(k, v, buffer := buffer .. k .. ":" .. v .. ";")
 		expect(buffer) toBe("Merckx:11;Hinault:10;Indurain:7;")
 	)
+	
+	it("foreach message without key iterates over the Map",
+		buffer := String clone
+		aMap foreach(v, buffer := buffer .. v .. ";")
+		expect(buffer) toBe("11;10;7;")
+	)
 )
 
