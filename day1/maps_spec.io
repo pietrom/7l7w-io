@@ -30,7 +30,9 @@ describe("Map spikes",
 	it("foreach message iterates over the Map",
 		buffer := String clone
 		aMap foreach(k, v, buffer := buffer .. k .. ":" .. v .. ";")
-		expect(buffer) toBe("Merckx:11;Hinault:10;Indurain:7;")
+		expect(buffer containsSeq("Merckx:11;")) toBe( true )
+		expect(buffer containsSeq("Hinault:10;")) toBe( true )
+		expect(buffer containsSeq("Indurain:7;")) toBe( true )
 	)
 	
 	it("foreach message without key iterates over the Map",
