@@ -9,6 +9,7 @@ foobar bar := method (
 )
 
 foobar sayHello := method ( target,
+	if(target == nil, target := "World")
 	"Hello, " .. target .. "!"
 )
 
@@ -23,6 +24,10 @@ describe("Methods spikes",
 	
 	it("sayHello message with target parameter",
 		expect(foobar sayHello("Pietro")) toBe ("Hello, Pietro!")
+	),
+	
+	it("sayHello message with DEFAULT target parameter",
+		expect(foobar sayHello) toBe ("Hello, World!")
 	)
 )
 
