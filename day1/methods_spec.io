@@ -8,7 +8,9 @@ foobar bar := method (
 	"BAR"
 )
 
-foobar sayHello := method ( target,
+Hello := Object clone
+
+Hello sayHello := method ( target,
 	if(target == nil, target := "World")
 	"Hello, " .. target .. "!"
 )
@@ -23,11 +25,13 @@ describe("Methods spikes",
 	),
 	
 	it("sayHello message with target parameter",
-		expect(foobar sayHello("Pietro")) toBe ("Hello, Pietro!")
+		hello := Hello clone
+		expect(hello sayHello("Pietro")) toBe ("Hello, Pietro!")
 	),
 	
 	it("sayHello message with DEFAULT target parameter",
-		expect(foobar sayHello) toBe ("Hello, World!")
+		hello := Hello clone
+		expect(hello sayHello) toBe ("Hello, World!")
 	)
 )
 
