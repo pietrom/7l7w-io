@@ -10,7 +10,7 @@ foobar bar := method (
 
 Hello := Object clone
 
-Hello init := method (msg,
+Hello init := method ( msg,
 	if(msg == nil, msg := "Hello")
 	self baseMessage := msg
 	self
