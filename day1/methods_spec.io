@@ -10,9 +10,15 @@ foobar bar := method (
 
 Hello := Object clone
 
+Hello init := method (msg,
+	if(msg == nil, msg := "Hello")
+	self baseMessage := msg
+	self
+)
+
 Hello sayHello := method ( target,
 	if(target == nil, target := "World")
-	"Hello, " .. target .. "!"
+	self baseMessage .. ", " .. target .. "!"	
 )
 
 describe("Methods spikes",
@@ -25,8 +31,13 @@ describe("Methods spikes",
 	),
 	
 	it("sayHello message with target parameter",
-		hello := Hello clone
+		hello := Hello clone("Hello")
 		expect(hello sayHello("Pietro")) toBe ("Hello, Pietro!")
+	),
+	
+	it("sayHello message with custom message and target parameter",
+		hello := Hello cloneWithoutInit init ("Hi")
+		expect(hello sayHello("Pietro")) toBe ("Hi, Pietro!")
 	),
 	
 	it("sayHello message with DEFAULT target parameter",
