@@ -8,6 +8,18 @@ foobar bar := method (
 	"BAR"
 )
 
+foobar forward := method (
+	result := call message name .. ":"
+	args := call message argsEvaluatedIn(call sender)
+	args foreach (i, a, 
+		result := result .. a .. ","
+	)
+	len := result size
+	last := result at(len - 1) asCharacter
+	if(last == ",", result := result inclusiveSlice(0, len - 2))
+	result .. ";"
+)
+
 Hello := Object clone
 
 Hello init := method ( msg,
@@ -43,6 +55,11 @@ describe("Methods spikes",
 	it("sayHello message with DEFAULT target parameter",
 		hello := Hello clone
 		expect(hello sayHello) toBe ("Hello, World!")
+	),
+	
+	it("Intercept undefined methods using forward message",
+		result := foobar aMethod("P", 19)
+		expect(result) toBe ("aMethod:P,19;")
 	)
 )
 
