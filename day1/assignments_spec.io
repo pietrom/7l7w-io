@@ -23,6 +23,13 @@ describe("Assignment spikes",
 	it("= Raises exception when the slot is not existing",
 		ex := try (o aSlot = "Final value")
 		expect(ex != nil) toBe (true)
+	),
+
+	it("::= Creates slot and setter method and and assigns its value",
+		o theSlot ::= "The value"
+		expect(o theSlot) toBe ("The value")
+		o setTheSlot("Other value")
+		expect(o theSlot) toBe ("Other value")
 	)
 )
 
