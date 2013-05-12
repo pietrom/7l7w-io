@@ -8,6 +8,12 @@ describe("Assignment spikes",
 	it(":= Creates slot ad assigns its value",
 		o theSlot := "The value"
 		expect(o theSlot) toBe ("The value")
+	),
+
+	it("= Assigns value to an existing slot",
+		o theSlot := "Initial value"
+		o theSlot = "Final value"
+		expect(o theSlot) toBe ("Final value")
 	)
 )
 
