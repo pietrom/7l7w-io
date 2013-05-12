@@ -14,6 +14,12 @@ describe("Assignment spikes",
 		expect(o theSlot) toBe ("The value")
 	),
 
+	it(":= Creates slot without setter",
+		o theSlot := "The value"
+		ex := try(o setTheSlot("Other value"))
+		expect(ex != nil) toBe (true)
+	),
+
 	it("= Assigns value to an existing slot",
 		o theSlot := "Initial value"
 		o theSlot = "Final value"
