@@ -9,7 +9,7 @@ describe("Assignment spikes",
 		o theSlot := nil
 	),
 
-	it(":= Creates slot ad assigns its value",
+	it(":= Creates slot and assigns its value",
 		o theSlot := "The value"
 		expect(o theSlot) toBe ("The value")
 	),
