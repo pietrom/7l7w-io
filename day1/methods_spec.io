@@ -80,7 +80,6 @@ describe("Methods spikes",
 		context bar := "bar"
 		context foo println
 		text := "method ( return self context foo asMutable capitalize .. \" \" .. self context bar asMutable capitalize )"
-		text println
 		result := context doString(text)
 		expect(result) toBe ("Foo Bar")
 	)
