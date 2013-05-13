@@ -66,6 +66,12 @@ describe("Methods spikes",
 		text := "return \"FOO\""
 		result := doString(text)
 		expect(result) toBe ("FOO")
+	),
+	
+	it("Evaluate slot content as method",
+		text := "method ( return 19 )"
+		result := doString(text)
+		expect(result) toBe (19)
 	)
 )
 
