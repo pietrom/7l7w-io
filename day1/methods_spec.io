@@ -62,7 +62,7 @@ describe("Methods spikes",
 		expect(result) toBe ("aMethod:P,19;")
 	),
 	
-	it("Evaluate slot content as method",
+	it("Evaluate slot content as code",
 		text := "return \"FOO\""
 		result := doString(text)
 		expect(result) toBe ("FOO")
