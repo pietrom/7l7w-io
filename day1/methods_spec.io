@@ -60,6 +60,12 @@ describe("Methods spikes",
 	it("Intercept undefined methods using forward message",
 		result := foobar aMethod("P", 19)
 		expect(result) toBe ("aMethod:P,19;")
+	),
+	
+	it("Evaluate slot content as method",
+		text := "return \"FOO\""
+		result := doString(text)
+		expect(result) toBe ("FOO")
 	)
 )
 
