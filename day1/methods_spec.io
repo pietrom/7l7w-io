@@ -72,6 +72,17 @@ describe("Methods spikes",
 		text := "method ( return 19 )"
 		result := doString(text)
 		expect(result) toBe (19)
+	),
+	
+	it("Evaluate slot content as method and execute it in a given context",
+		context := Object clone
+		context foo := "foo"
+		context bar := "bar"
+		context foo println
+		text := "method ( return self context foo asMutable capitalize .. \" \" .. self context bar asMutable capitalize )"
+		text println
+		result := context doString(text)
+		expect(result) toBe ("Foo Bar")
 	)
 )
 
