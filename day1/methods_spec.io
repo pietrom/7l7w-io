@@ -43,9 +43,7 @@ TestSuite run := method(
 		)		
 	)
 	testMethods foreach(i, tm,
-		("Executing " .. tm) println
 		self getSlot(tm) call
-		("Executed " .. tm) println
 	)
 )
 
@@ -94,7 +92,6 @@ describe("Methods spikes",
 		context := Object clone
 		context foo := "foo"
 		context bar := "bar"
-		context foo println
 		text := "method ( return self context foo asMutable capitalize .. \" \" .. self context bar asMutable capitalize )"
 		result := context doString(text)
 		expect(result) toBe ("Foo Bar")
@@ -105,20 +102,15 @@ describe("Methods spikes",
 		mySuite flagTestFooExecuted := false
 		mySuite flagTestBarExecuted := false
 		mySuite testFoo := method(
-			"IN testFoo" println
 			self flagTestFooExecuted = true
 		)
 		
 		mySuite testBar := method(
-			"IN testBar" println
 			self flagTestBarExecuted = true
 		)
 		
 		mySuite run
 		
-		"Suite executed" println
-		mySuite flagTestFooExecuted println
-		mySuite flagTestBarExecuted println
 		expect(mySuite flagTestFooExecuted) toBe (true)
 		expect(mySuite flagTestBarExecuted) toBe (true)
 	)
