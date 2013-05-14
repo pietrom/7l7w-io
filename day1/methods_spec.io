@@ -33,6 +33,22 @@ Hello sayHello := method ( target,
 	self baseMessage .. ", " .. target .. "!"	
 )
 
+TestSuite := Object clone
+
+TestSuite run := method(
+	testMethods := List clone
+	self slotNames foreach (i, n,
+		if(n beginsWithSeq("test"), 
+			testMethods append(n)
+		)		
+	)
+	testMethods foreach(i, tm,
+		("Executing " .. tm) println
+		self getSlot(tm) call
+		("Executed " .. tm) println
+	)
+)
+
 describe("Methods spikes",
 	it("foo message returns FOO",
 		expect(foobar foo) toBe ("FOO")
@@ -82,6 +98,29 @@ describe("Methods spikes",
 		text := "method ( return self context foo asMutable capitalize .. \" \" .. self context bar asMutable capitalize )"
 		result := context doString(text)
 		expect(result) toBe ("Foo Bar")
+	),
+	
+	it("Executes all methods whose name stars with 'test', like in a TestSuite",
+		mySuite := TestSuite clone
+		mySuite flagTestFooExecuted := false
+		mySuite flagTestBarExecuted := false
+		mySuite testFoo := method(
+			"IN testFoo" println
+			self flagTestFooExecuted = true
+		)
+		
+		mySuite testBar := method(
+			"IN testBar" println
+			self flagTestBarExecuted = true
+		)
+		
+		mySuite run
+		
+		"Suite executed" println
+		mySuite flagTestFooExecuted println
+		mySuite flagTestBarExecuted println
+		expect(mySuite flagTestFooExecuted) toBe (true)
+		expect(mySuite flagTestBarExecuted) toBe (true)
 	)
 )
 
