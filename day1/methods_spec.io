@@ -38,7 +38,7 @@ TestSuite := Object clone
 TestSuite run := method(
 	testMethods := List clone
 	self slotNames foreach (i, n,
-		if(n beginsWithSeq("test"), 
+		if(n beginsWithSeq("test") and self getSlot(n) type == "Block", 
 			testMethods append(n)
 		)		
 	)
@@ -113,6 +113,23 @@ describe("Methods spikes",
 		
 		expect(mySuite flagTestFooExecuted) toBe (true)
 		expect(mySuite flagTestBarExecuted) toBe (true)
+	),
+	it("Doesn't execute slots whose name stars with 'test' if they aren't blocks",
+		mySuite := TestSuite clone
+                mySuite flagTestFooExecuted := false
+                mySuite flagTestBarExecuted := false
+                mySuite testFoo := method(
+                        self flagTestFooExecuted = true
+                )
+		mySuite testDontExecute := "Not to be executed"
+                mySuite testBar := method(
+                        self flagTestBarExecuted = true
+                )
+
+                mySuite run
+
+                expect(mySuite flagTestFooExecuted) toBe (true)
+                expect(mySuite flagTestBarExecuted) toBe (true)
 	)
 )
 
