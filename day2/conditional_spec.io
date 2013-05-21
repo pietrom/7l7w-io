@@ -25,5 +25,12 @@ describe("Conditional spikes",
 		(3 < 2) ifTrue (self a := "SECOND") ifFalse(self a := "THIRD")
 		a println
 		expect(self a) toBe("THIRD")
+	),
+
+	it("if then else withi true condition",
+		self a := "FIRST"
+		if (3 > 2) then (self a := "SECOND") else (self a := "THIRD")
+		a println
+		expect(self a) toBe("SECOND")
 	)
 )
